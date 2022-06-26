@@ -14,28 +14,28 @@ xxxxx --> 获取最低传输延迟且延迟分布最均衡的路由；
 usage --> 获取最高带宽余量的路由；
 usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
 --net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
---Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）。\
+--Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）。
 
-### 功能模块：\
+### 功能模块：
 1、打印help信息
 2、原始数据文件处理；\
 3、消息分配及虚链路优化处理；\
 4、虚链路路由优化；\
-5、消息传输路径回溯。\
+5、消息传输路径回溯。
 
 ### 命令
 1、打印help信息：\
 python Main.py -h\
 或者\
-python Main.py --help\
+python Main.py --help
 
 2、处理原始数据文件：\
-python Main.py -Data_Processing=True\
+python Main.py -Data_Processing=True
 
 3、优化处理消息分配及虚链路：\
 python Main.py -VL_Processing=True --topology_type=AFDX\
 或者\
-python Main.py -VL_Processing=True --topology_type=ARINC664\
+python Main.py -VL_Processing=True --topology_type=ARINC664
 
 4、优化虚链路路由：\
 python Main.py -Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=A\
@@ -52,7 +52,7 @@ python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage -
 或者\
 python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B\
+python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
 
 5、回溯消息传输路径：\
 python Main.py -h 或者 python Main.py --help\
@@ -70,4 +70,4 @@ python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usag
 或者\
 python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B\
+python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
