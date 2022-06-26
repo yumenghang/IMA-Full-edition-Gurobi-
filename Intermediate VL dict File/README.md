@@ -1,0 +1,19 @@
+# 原始数据文件处理后得到的中间过程文件
+包括以下中间过程文件：
+"./ARINC664_MESSAGES.txt"\
+"./ARINC664_MESSAGES_OF_NET_A.txt"\
+"./ARINC664_MESSAGES_OF_NET_B.txt"\
+"./ARINC664_PHYSICAL_PORTS_CONNECTIONS_OF_NET_A.txt"\
+"./ARINC664_PHYSICAL_PORTS_CONNECTIONS_OF_NET_B.txt"\
+"./arinc664_physical_ports_index_for_A_NET.npy"\
+"./arinc664_physical_ports_index_for_B_NET.npy
+"./arinc664_physical_ports_index_reversed_for_A_NET.npy"\
+"./arinc664_physical_ports_index_reversed_for_B_NET.npy"\
+"./messages_info.npy"\
+"./messages_per_physical_port.npy"\
+"./physical_ports_adjacent_matrix.txt"\
+"./physical_ports_index.npy"\
+"./physical_ports_index_reversed.npy"\
+"./physical_ports_information.npy"\
+"./RDIU_information.npy"\
+"./switches_information.npy"
