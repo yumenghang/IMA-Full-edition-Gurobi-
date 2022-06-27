@@ -224,6 +224,11 @@ ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
 #### 1.3.3.6  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_A_NET_OF_ARINC664
 #### 1.3.3.7  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_AFDX
 #### 1.3.3.8  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
+具体格式为：
+三维数组
+第一维：虚链路index
+第二维、第三维：网络类型（A网或B网）中physical port的index，如：
+TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX[ VL_index ][ previous port ][ following port ]表示AFDX网络拓扑中、A网下关于最高带宽余量且负载最均衡的路由中，编号为VL_index的虚链路是否由物理链路previous port->following port转发。\
 其中，路径"./Intermediate Intermediate routes file/"下包含大量其他存储文件，是用来在下一个程序功能--消息转发路径回溯中，回溯消息的转发路径所需要用到的信息，具体细节这里可以不用过多考虑。
 
 ### 1.3.4  Messages routes file
