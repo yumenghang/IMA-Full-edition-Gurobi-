@@ -238,7 +238,7 @@ ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
 #### 1.3.4.8  MESSAGES_DICT_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
 具体格式为：
 键（key）：消息的标识符
-值（value）：为一列表，分别存储以下相关信息：
+值（value）：为一列表，分别存储以下相关信息：\
 &emsp;&emsp;[\
 &emsp;&emsp;&emsp;&emsp;message guid, [ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
 &emsp;&emsp;]
