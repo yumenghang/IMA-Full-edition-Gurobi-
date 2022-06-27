@@ -1,6 +1,6 @@
-# IMA-Full edition (Gurobi)
+# 1  IMA-Full edition (Gurobi)
 
-## 使用
+## 1.1  使用
 python Main.py -h --help --Data_Processing= --VL_Processing= --topology_type= --Routes_Optimization= --task= --net_type= --Routes_Path_Processing=
 -h: 打印help信息；\
 --help: 打印help信息；\
@@ -16,14 +16,14 @@ usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
 --net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
 --Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）。
 
-### 功能模块：
+### 1.1.1  功能模块：
 1、打印help信息
 2、原始数据文件处理；\
 3、消息分配及虚链路优化处理；\
 4、虚链路路由优化；\
 5、消息传输路径回溯。
 
-### 命令
+### 1.1.2  命令
 1、打印help信息：\
 python Main.py -h\
 或者\
@@ -72,14 +72,16 @@ python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usag
 或者\
 python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
 
-## 中间过程文件下载
+## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：
 https://jbox.sjtu.edu.cn/l/61QcBr
 注：中间过程文件如有更新，会第一时间替换更新掉云端文件。
 
-## 中间过程文件介绍
+## 1.3  中间过程文件介绍
 
-### physical_ports_information
+### 1.3.1  Intermediate data file
+
+#### 1.3.1.1  physical_ports_information
 键（key）：物理端口的全称，表示为：physical port full name。形式为：物理端口所属物理设备+"."+物理端口名，如物理设备IDURIGHTOUTBOARD上的A端口--IDURIGHTOUTBOARD.A，或物理端口所属机柜+"."+物理端口所属设备+"."+物理端口名，如机柜CCR_LEFT中物理设备GPM_L6上的A端口--CCR_LEFT.GPM_L6.A\
 值（value）：为一列表，按以下格式存储对应物理端口的相关信息：\
 &emsp;&emsp;[\
@@ -93,18 +95,18 @@ https://jbox.sjtu.edu.cn/l/61QcBr
 &emsp;&emsp;&emsp;&emsp;该物理端口的传输速率（单位：MB/s）, #7\
 &emsp;&emsp;]
 
-### physical_ports_adjacent_matrix
+#### 1.3.1.2  physical_ports_adjacent_matrix
 记录物理端口（除电源接口外的所有物理端口）之间的连接关系
 
-### physical_ports_index
+#### 1.3.1.3  physical_ports_index
 键（key）：物理端口的全称，physical port full name，如：CCR_LEFT.GPM_L6.A\
 值（value）：该物理端口在邻接矩阵physical_ports_adjacent_matrix中的index
 
-### physical_ports_index_reversed
+#### 1.3.1.4  physical_ports_index_reversed
 键（key）：物理端口在邻接矩阵physical_ports_adjacent_matrix中的index\
 值（value）：物理端口的全称，physical port full name
 
-### switches_information
+#### 1.3.1.5  switches_information
 键（key）：交换机的标识符\
 值（value）：为一列表，按以下格式存储对应交换机的相关信息：\
 &emsp;&emsp;[\
@@ -114,7 +116,7 @@ https://jbox.sjtu.edu.cn/l/61QcBr
 &emsp;&emsp;&emsp;&emsp;[ physical port full name, ..., physical port full name  ], #3 （注：交换机内除电源接口外，共25个ARINC-664协议的物理端口）\
 &emsp;&emsp;]
 
-### RDIU_information
+#### 1.3.1.6  RDIU_information
 键（key）：RDIU名称(注：一共有16台交换机，分别是：RDIU_01、RDIU_02、RDIU_03、RDIU_04、RDIU_05、RDIU_06、RDIU_07、RDIU_08、RDIU_09、RDIU_10、RDIU_11、RDIU_12、RDIU_13、RDIU_14、RDIU_15、RDIU_16)\
 值（value）：为一列表，按以下格式存储对应RDIU的相关信息：\
 &emsp;&emsp;[\
@@ -125,7 +127,7 @@ https://jbox.sjtu.edu.cn/l/61QcBr
 &emsp;&emsp;&emsp;&emsp;[ physical port full name, ..., physical port full name ], #4\
 &emsp;&emsp;]
 
-### messages_info
+#### 1.3.1.7  messages_info
 键（key）：消息（包括：ARINC-664消息、ARINC-429消息、CAN消息、Analog消息）的标识符\
 值（value）：为一列表，按以下格式存储对应消息的相关信息：\
 &emsp;&emsp;[\
@@ -145,7 +147,7 @@ https://jbox.sjtu.edu.cn/l/61QcBr
 &emsp;&emsp;&emsp;&emsp;] #9\
 &emsp;&emsp;]
 
-### messages_per_physical_port
+#### 1.3.1.8  messages_per_physical_port
 键（key）：物理端口的全称，表示为：physical port full name。形式为：物理端口所属物理设备+"."+物理端口名，如物理设备IDURIGHTOUTBOARD上的A端口--IDURIGHTOUTBOARD.A，或物理端口所属机柜+"."+物理端口所属设备+"."+物理端口名，如机柜CCR_LEFT中物理设备GPM_L6上的A端口--CCR_LEFT.GPM_L6.A\
 值（value）：为一列表，按以下格式存储对应物理端口的相关信息：\
 &emsp;&emsp;[\
@@ -162,29 +164,58 @@ https://jbox.sjtu.edu.cn/l/61QcBr
 &emsp;&emsp;]
 
 
-### arinc664_physical_ports_adjacent_matrix_for_A_NET
+#### 1.3.1.9  arinc664_physical_ports_adjacent_matrix_for_A_NET
 记录A网中ARINC-664协议物理端口之间的连接关系
 
-### arinc664_physical_ports_index_for_A_NET
+#### 1.3.1.10  arinc664_physical_ports_index_for_A_NET
 键（key）：A网中ARINC-664协议物理端口的全称，physical port full name，如：CCR_LEFT.GPM_L6.A\
 值（value）：该物理端口在邻接矩阵arinc664_physical_ports_adjacent_matrix_for_A_NET中的index
 
-### arinc664_physical_ports_index_reversed_for_A_NET
+#### 1.3.1.11  arinc664_physical_ports_index_reversed_for_A_NET
 键（key）：A网中ARINC-664协议物理端口在邻接矩阵arinc664_physical_ports_adjacent_matrix_for_A_NET中的index\
 值（value）：物理端口的全称，physical port full name
 
-### arinc664_physical_ports_adjacent_matrix_for_B_NET
+#### 1.3.1.12  arinc664_physical_ports_adjacent_matrix_for_B_NET
 记录B网中ARINC-664协议物理端口之间的连接关系
 
-### arinc664_physical_ports_index_for_B_NET
+#### 1.3.1.13  arinc664_physical_ports_index_for_B_NET
 键（key）：B网中ARINC-664协议物理端口的全称，physical port full name，如：CCR_LEFT.GPM_L6.B\
 值（value）：该物理端口在邻接矩阵arinc664_physical_ports_adjacent_matrix_for_B_NET中的index
 
-### arinc664_physical_ports_index_reversed_for_B_NET
+#### 1.3.1.14  arinc664_physical_ports_index_reversed_for_B_NET
 键（key）：B网中ARINC-664协议物理端口在邻接矩阵arinc664_physical_ports_adjacent_matrix_for_B_NET中的index\
 值（value）：物理端口的全称，physical port full name
 
-## Intermediate VL dict file
+### 1.3.2  Intermediate VL dict file
+
+#### 1.3.2.1  VL_DICT_OF_A_NET_OF_AFDX、VL_DICT_OF_A_NET_OF_ARINC664、VL_DICT_OF_B_NET_OF_AFDX、VL_DICT_OF_B_NET_OF_ARINC664
+其中，AFDX与ARINC664表示网络拓扑类型；A、B表示网络类型（A网或B网）。\
+键（key）：ARINC664协议的物理端口--messages_per_physical_port，包括：\
+RDIU_01.A, RDIU_01.B, RDIU_02.A, RDIU_02.B, RDIU_03.A, RDIU_03.B, RDIU_04.A, RDIU_04.B, RDIU_05.A, RDIU_05.B,\
+RDIU_06.A, RDIU_06.B, RDIU_07.A, RDIU_07.B, RDIU_08.A, RDIU_08.B, RDIU_09.A, RDIU_09.B, RDIU_10.A, RDIU_10.B,\
+RDIU_11.A, RDIU_11.B, RDIU_12.A, RDIU_12.B, RDIU_13.A, RDIU_13.B, RDIU_14.A, RDIU_14.B, RDIU_15.A, RDIU_15.B,\
+RDIU_16.A, RDIU_16.B, CCR_LEFT.GPM_L6.A, CCR_LEFT.GPM_L6.B, FCM_1.A, FCM_1.B, CCR_LEFT.GPM_L4.A, CCR_LEFT.GPM_L4.B,\
+ADEC_L_CHA.A, FADEC_L_CHA.B, CCR_LEFT.GPM_L1.A, CCR_LEFT.GPM_L1.B, IDULEFTINBOARD.A, IDULEFTINBOARD.B,\
+IDURIGHTINBOARD.A, IDURIGHTINBOARD.B, IDUCENTER.A, IDUCENTER.B, CCR_RIGHT.GPM_R1.A, CCR_RIGHT.GPM_R1.B,\
+CCR_RIGHT.GPM_R5.A, 'CCR_RIGHT.GPM_R5.B, FADEC_R_CHA.A, FADEC_R_CHA.B, CCR_RIGHT.GPM_R3.A, CCR_RIGHT.GPM_R3.B,\
+L_RPDU_A.A, L_RPDU_A.B, L_RPDU_B.A, L_RPDU_B.B, R_RPDU_A.A, R_RPDU_A.B, R_RPDU_B.A, R_RPDU_B.B, CCR_RIGHT.GPM_R6.A,\
+CCR_RIGHT.GPM_R6.B, IDULEFTOUTBOARD.A, IDULEFTOUTBOARD.B, IDURIGHTOUTBOARD.A, IDURIGHTOUTBOARD.B,\
+HARDWARE_AHMUINSTANCE.A, 'HARDWARE_AHMUINSTANCE.B, CCR_LEFT.GPM_L2.A, CCR_LEFT.GPM_L2.B, CCR_LEFT.GPM_L5.A,\
+CCR_LEFT.GPM_L5.B, CCR_RIGHT.GPM_R4.A, CCR_RIGHT.GPM_R4.B, CCR_LEFT.GPM_L3.A, CCR_LEFT.GPM_L3.B,\
+CCR_RIGHT.GPM_R2.A, CCR_RIGHT.GPM_R2.B, FCM_2.A, FCM_2.B, FCM_3.A, FCM_3.B, FADEC_L_CHB.A, FADEC_L_CHB.B,\
+FADEC_R_CHB.A, FADEC_R_CHB.B, ISS_R.A, ISS_R.B, ISS_L.A, ISS_L.B, FWDEAFR.A, FWDEAFR.B, AFTEAFR.A, AFTEAFR.B,\
+SYSTEST_PORT_LRU.A, SYSTEST_PORT_LRU.B, CCR_LEFT.ACS_LA.A, ARS_1B.B, ARS_2A.A, ARS_2B.B, CCR_LEFT.ACS_LB.B,\
+ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
+值（value）：以该ARINC664协议的物理端口为转发端口的虚拟链路，为一列表，分别存储以下信息：
+&emsp;&emsp;[\
+&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0, ... ], [ physical_destination of subVL1, ... ], [ physical_destination of subVL2, ... ], [ physical_destination of subVL3, ... ] ], [ [ delay_bound of subVL0, ... ], [ delay_bound of subVL1, ... ], [ delay_bound of subVL2, ... ], [ delay_bound of subVL3, ... ] ], [ [ delay_occurred of subVL0, ... ], [ delay_occurred of subVL1, ... ], [ delay_occurred of subVL2, ... ], [ delay_occurred of subVL3, ... ] ] ], #虚链路1\
+&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0, ... ], [ physical_destination of subVL1, ... ], [ physical_destination of subVL2, ... ], [ physical_destination of subVL3, ... ] ], [ [ delay_bound of subVL0, ... ], [ delay_bound of subVL1, ... ], [ delay_bound of subVL2, ... ], [ delay_bound of subVL3, ... ] ], [ [ delay_occurred of subVL0, ... ], [ delay_occurred of subVL1, ... ], [ delay_occurred of subVL2, ... ], [ delay_occurred of subVL3, ... ] ] ], #虚链路2\
+&emsp;&emsp;&emsp;&emsp;..., #2\
+&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0, ... ], [ physical_destination of subVL1, ... ], [ physical_destination of subVL2, ... ], [ physical_destination of subVL3, ... ] ], [ [ delay_bound of subVL0, ... ], [ delay_bound of subVL1, ... ], [ delay_bound of subVL2, ... ], [ delay_bound of subVL3, ... ] ], [ [ delay_occurred of subVL0, ... ], [ delay_occurred of subVL1, ... ], [ delay_occurred of subVL2, ... ], [ delay_occurred of subVL3, ... ] ] ] #虚链路n\
+&emsp;&emsp;]
+
+
+
 将原始数据中的消息以物理设备及其端口为单位（如：RDIU_01.A, RDIU_01.B等），进行虚链路的划分。\
 其中，以字典（Dict）：messages_per_physical_port为入手点。这里首先穷举以下messages_per_physical_port中的键值，也就是路由问题中虚链路的起点：
 RDIU_01.A, RDIU_01.B, RDIU_02.A, RDIU_02.B, RDIU_03.A, RDIU_03.B, RDIU_04.A, RDIU_04.B, RDIU_05.A, RDIU_05.B,\
@@ -208,10 +239,5 @@ ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
 建立两个字典：VL_DICT_OF_A_NET、VL_DICT_OF_B_NET，分别存储需要从A网、B网进行路由的虚拟链路，具体如下：
 键（key）：设备+端口名（A或B），如：RDIU_01.A、RDIU_12.B、CCR_LEFT.GPM_L4.A、L_RPDU_A.B等
 值（value）：为一列表，分别存储以下信息：
-&emsp;&emsp;[\
-&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0 ], [ physical_destination of subVL1 ], [ physical_destination of subVL2 ], [ physical_destination of subVL3 ] ] ], #虚链路1\
-&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ message_guid, ..., message_guid ], [ logical_destination, ..., logical_destination ], [ physical_destination, ..., physical_destination ] ], #虚链路2\
-&emsp;&emsp;&emsp;&emsp;..., #2\
-&emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0 ], [ physical_destination of subVL1 ], [ physical_destination of subVL2 ], [ physical_destination of subVL3 ] ] ], #虚链路n\
-&emsp;&emsp;]
+
 注：从同一物理端口转发的虚链路可能有很多条，因此要分别记录其参数：BAG、MTU、BandWidth，以及该虚链路包含的消息（以列表的形式记录）、该虚链路的目的节点的逻辑端口（以列表的形式记录）、该虚链路的目的节点的物理端口（以列表的形式记录）
