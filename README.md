@@ -214,30 +214,31 @@ ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
 &emsp;&emsp;&emsp;&emsp;[ BAG, MTU, BandWidth, [ [ message_guid of subVL0, ... ], [ message_guid of subVL1, ... ], [ message_guid of subVL2, ... ], [ message_guid of subVL3, ... ] ], [ [ logical_destination of subVL0, ... ], [ logical_destination of subVL1, ... ], [ logical_destination of subVL2, ... ], [ logical_destination of subVL3, ... ] ], [ [ physical_destination of subVL0, ... ], [ physical_destination of subVL1, ... ], [ physical_destination of subVL2, ... ], [ physical_destination of subVL3, ... ] ], [ [ delay_bound of subVL0, ... ], [ delay_bound of subVL1, ... ], [ delay_bound of subVL2, ... ], [ delay_bound of subVL3, ... ] ], [ [ delay_occurred of subVL0, ... ], [ delay_occurred of subVL1, ... ], [ delay_occurred of subVL2, ... ], [ delay_occurred of subVL3, ... ] ] ] #虚链路n\
 &emsp;&emsp;]
 
+### 1.3.3  Intermediate Intermediate routes file
+根据不同的网络拓扑类型（ARINC664或AFDX）、网络类型（A或B）以及任务类型（usage或usage_and_loading），确定虚链路的转发路由。以下是关于不同网络拓扑类型、网络类型以及任务类型的虚链路转发路由。
+#### 1.3.3.1  TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX
+#### 1.3.3.2  TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_ARINC664
+#### 1.3.3.3  TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_B_NET_OF_AFDX
+#### 1.3.3.4  TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
+#### 1.3.3.5  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX
+#### 1.3.3.6  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_A_NET_OF_ARINC664
+#### 1.3.3.7  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_AFDX
+#### 1.3.3.8  TOTAL_Y_FOR_RETURN_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
+其中，路径"./Intermediate Intermediate routes file/"下包含大量其他存储文件，是用来在下一个程序功能--消息转发路径回溯中，回溯消息的转发路径所需要用到的信息，具体细节这里可以不用过多考虑。
 
-
-将原始数据中的消息以物理设备及其端口为单位（如：RDIU_01.A, RDIU_01.B等），进行虚链路的划分。\
-其中，以字典（Dict）：messages_per_physical_port为入手点。这里首先穷举以下messages_per_physical_port中的键值，也就是路由问题中虚链路的起点：
-RDIU_01.A, RDIU_01.B, RDIU_02.A, RDIU_02.B, RDIU_03.A, RDIU_03.B, RDIU_04.A, RDIU_04.B, RDIU_05.A, RDIU_05.B,\
-RDIU_06.A, RDIU_06.B, RDIU_07.A, RDIU_07.B, RDIU_08.A, RDIU_08.B, RDIU_09.A, RDIU_09.B, RDIU_10.A, RDIU_10.B,\
-RDIU_11.A, RDIU_11.B, RDIU_12.A, RDIU_12.B, RDIU_13.A, RDIU_13.B, RDIU_14.A, RDIU_14.B, RDIU_15.A, RDIU_15.B,\
-RDIU_16.A, RDIU_16.B,\
-RDIU_01, RDIU_02, RDIU_03, RDIU_04, RDIU_05, RDIU_06, RDIU_07, RDIU_08,\
-RDIU_09, RDIU_10, RDIU_11, RDIU_12, RDIU_13, RDIU_14, RDIU_15, RDIU_16,\
-CCR_LEFT.GPM_L6.A, CCR_LEFT.GPM_L6.B, FCM_1.A, FCM_1.B, CCR_LEFT.GPM_L4.A, CCR_LEFT.GPM_L4.B, FADEC_L_CHA.A, FADEC_L_CHA.B,\
-CCR_LEFT.GPM_L1.A, CCR_LEFT.GPM_L1.B, IDULEFTINBOARD.A, IDULEFTINBOARD.B, IDURIGHTINBOARD.A, IDURIGHTINBOARD.B,\
-IDUCENTER.A, IDUCENTER.B, CCR_RIGHT.GPM_R1.A, CCR_RIGHT.GPM_R1.B, CCR_RIGHT.GPM_R5.A, 'CCR_RIGHT.GPM_R5.B,\
-FADEC_R_CHA.A, FADEC_R_CHA.B, CCR_RIGHT.GPM_R3.A, CCR_RIGHT.GPM_R3.B, L_RPDU_A.A, L_RPDU_A.B, L_RPDU_B.A, L_RPDU_B.B,\
-R_RPDU_A.A, R_RPDU_A.B, R_RPDU_B.A, R_RPDU_B.B, CCR_RIGHT.GPM_R6.A, CCR_RIGHT.GPM_R6.B, IDULEFTOUTBOARD.A, IDULEFTOUTBOARD.B,\
-IDURIGHTOUTBOARD.A, IDURIGHTOUTBOARD.B, HARDWARE_AHMUINSTANCE.A, 'HARDWARE_AHMUINSTANCE.B, CCR_LEFT.GPM_L2.A, CCR_LEFT.GPM_L2.B,\
-CCR_LEFT.GPM_L5.A, CCR_LEFT.GPM_L5.B, CCR_RIGHT.GPM_R4.A, CCR_RIGHT.GPM_R4.B, CCR_LEFT.GPM_L3.A, CCR_LEFT.GPM_L3.B,\
-CCR_RIGHT.GPM_R2.A, CCR_RIGHT.GPM_R2.B, FCM_2.A, FCM_2.B, FCM_3.A, FCM_3.B, FADEC_L_CHB.A, FADEC_L_CHB.B,\
-FADEC_R_CHB.A, FADEC_R_CHB.B, ISS_R.A, ISS_R.B, ISS_L.A, ISS_L.B, FWDEAFR.A, FWDEAFR.B, AFTEAFR.A, AFTEAFR.B,\
-SYSTEST_PORT_LRU.A, SYSTEST_PORT_LRU.B, CCR_LEFT.ACS_LA.A, ARS_1B.B, ARS_2A.A, ARS_2B.B, CCR_LEFT.ACS_LB.B,\
-ARS_1A.A, CCR_RIGHT.ACS_RA.A, CCR_RIGHT.ACS_RB.B\
-其中键值不以".A"与".B"结尾的表示：需要经相应的RDIU设备合并、转换的非ARINC664消息。其余表示ARINC664消息，划分虚链路后，从相应的A端口或者B端口转发、路由。
-建立两个字典：VL_DICT_OF_A_NET、VL_DICT_OF_B_NET，分别存储需要从A网、B网进行路由的虚拟链路，具体如下：
-键（key）：设备+端口名（A或B），如：RDIU_01.A、RDIU_12.B、CCR_LEFT.GPM_L4.A、L_RPDU_A.B等
-值（value）：为一列表，分别存储以下信息：
-
-注：从同一物理端口转发的虚链路可能有很多条，因此要分别记录其参数：BAG、MTU、BandWidth，以及该虚链路包含的消息（以列表的形式记录）、该虚链路的目的节点的逻辑端口（以列表的形式记录）、该虚链路的目的节点的物理端口（以列表的形式记录）
+### 1.3.4  Messages routes file
+根据上述所有中间过程文件，最终回溯得到并存储不同网络拓扑类型、网络类型以及任务类型下消息的转发路由，共包括以下8个字典文件：
+#### 1.3.4.1  MESSAGES_DICT_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX
+#### 1.3.4.2  MESSAGES_DICT_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_ARINC664
+#### 1.3.4.3  MESSAGES_DICT_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_B_NET_OF_AFDX
+#### 1.3.4.4  MESSAGES_DICT_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
+#### 1.3.4.5  MESSAGES_DICT_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX
+#### 1.3.4.6  MESSAGES_DICT_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_A_NET_OF_ARINC664
+#### 1.3.4.7  MESSAGES_DICT_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_AFDX
+#### 1.3.4.8  MESSAGES_DICT_OF_MINIMUM_USAGE_OF_BANDWIDTH_OF_B_NET_OF_ARINC664
+具体格式为：
+键（key）：消息的标识符
+值（value）：为一列表，分别存储以下相关信息：
+&emsp;&emsp;[\
+&emsp;&emsp;&emsp;&emsp;[ message guid, [ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ] ]
+&emsp;&emsp;]
