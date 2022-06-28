@@ -30,47 +30,47 @@ python Main.py -h\
 python Main.py --help
 
 2、处理原始数据文件：\
-python Main.py -Data_Processing=True
+python Main.py --Data_Processing=True
 
 3、优化处理消息分配及虚链路：\
-python Main.py -VL_Processing=True --topology_type=AFDX\
+python Main.py --VL_Processing=True --topology_type=AFDX\
 或者\
-python Main.py -VL_Processing=True --topology_type=ARINC664
+python Main.py --VL_Processing=True --topology_type=ARINC664
 
 4、优化虚链路路由：\
-python Main.py -Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=A\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=B\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=A\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=B\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
 
 5、回溯消息传输路径：\
 python Main.py -h 或者 python Main.py --help\
-python Main.py -Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=A\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=B\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=A\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=B\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
 或者\
-python Main.py -Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：
