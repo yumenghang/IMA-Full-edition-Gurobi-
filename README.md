@@ -55,7 +55,6 @@ python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
 
 5、回溯消息传输路径：\
-python Main.py -h 或者 python Main.py --help\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=A\
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=B\
