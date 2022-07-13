@@ -18,7 +18,7 @@ usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
 --Verify_Transmitting_Path: True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）。
 
 ### 1.1.1  功能模块：
-1、打印help信息
+1、打印help信息；\
 2、原始数据文件处理；\
 3、消息分配及虚链路优化处理；\
 4、虚链路路由优化；\
