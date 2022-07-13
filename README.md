@@ -14,7 +14,7 @@ xxxxx --> 获取最低传输延迟且延迟分布最均衡的路由；
 usage --> 获取最高带宽余量的路由；
 usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
 --net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
---Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）；
+--Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）；\
 --Verify_Transmitting_Path: True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）。
 
 ### 1.1.1  功能模块：
