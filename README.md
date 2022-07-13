@@ -251,6 +251,6 @@ TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX[
 &emsp;&emsp;[\
 &emsp;&emsp;&emsp;&emsp;message guid,\
 &emsp;&emsp;&emsp;&emsp;[ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
-&emsp;&emsp;&emsp;&emsp;... ...
+&emsp;&emsp;&emsp;&emsp;... ...\
 &emsp;&emsp;&emsp;&emsp;[ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
 &emsp;&emsp;]
