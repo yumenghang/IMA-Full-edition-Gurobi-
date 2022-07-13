@@ -1,7 +1,7 @@
 # 1  IMA-Full edition (Gurobi)
 
 ## 1.1  使用
-python Main.py -h --help --Data_Processing= --VL_Processing= --topology_type= --Routes_Optimization= --task= --net_type= --Routes_Path_Processing=
+python Main.py -h --help --Data_Processing= --VL_Processing= --topology_type= --Routes_Optimization= --task= --net_type= --Routes_Path_Processing= --Verify_Transmitting_Path= \
 -h: 打印help信息；\
 --help: 打印help信息；\
 --Data_Processing: True或者False，表示是否处理原始数据。原始数据的处理结果存储在同一路径下的"./Intermediate data file/"文件夹中（注：此时不需要额外的参数）；\
@@ -14,14 +14,16 @@ xxxxx --> 获取最低传输延迟且延迟分布最均衡的路由；
 usage --> 获取最高带宽余量的路由；
 usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
 --net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
---Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）。
+--Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）；
+--Verify_Transmitting_Path: True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）。
 
 ### 1.1.1  功能模块：
 1、打印help信息
 2、原始数据文件处理；\
 3、消息分配及虚链路优化处理；\
 4、虚链路路由优化；\
-5、消息传输路径回溯。
+5、消息传输路径回溯；\
+6、验证消息传输路径的正确性。
 
 ### 1.1.2  命令
 1、打印help信息：\
@@ -70,6 +72,9 @@ python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usa
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
+
+5、验证消息传输路径的正确性：\
+python Main.py --Verify_Transmitting_Path=True
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：\
@@ -244,5 +249,8 @@ TOTAL_Y_FOR_RETURN_OF_MINIMUM_AND_BALANCING_USAGE_OF_BANDWIDTH_OF_A_NET_OF_AFDX[
 键（key）：消息的标识符
 值（value）：为一列表，分别存储以下相关信息：\
 &emsp;&emsp;[\
-&emsp;&emsp;&emsp;&emsp;message guid, [ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
+&emsp;&emsp;&emsp;&emsp;message guid,\
+&emsp;&emsp;&emsp;&emsp;[ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
+&emsp;&emsp;&emsp;&emsp;... ...
+&emsp;&emsp;&emsp;&emsp;[ source logical port, [ source physical port, physical port, physical port, ..., physical port, destination physical port ], destination logical port ]\
 &emsp;&emsp;]
