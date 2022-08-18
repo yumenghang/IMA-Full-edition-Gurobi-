@@ -8,11 +8,11 @@ python Main.py -h --help --Data_Processing= --VL_Processing= --topology_type= --
 --VL_Processing: True或者False，表示是否将消息以虚链路为单位进行划分。消息划分后得到的虚链路以字典的形式存储在同一路径下的"./Intermediate VL dict file/"文件夹中（注：此时需要额外的参数：topology_type）；\
 --topology_type: AFDX或者ARINC6664，表示消息、虚链路的处理范围是在AFDX网络拓扑中还是在ARINC664网络拓扑中；\
 --Routes_Optimization: True或者False，表示是否对虚链路的路由进行优化。虚链路路由的优化结果得到后，包括一些中间数据，均存储在同一路径下的"./Intermediate routes file/"文件夹中（注：此时需要额外的参数：topology_type、task以及net_type）；\
---task: usage或者usage_and_loading，表示虚链路路由的优化过程中，需要遵循的既定前提条件，包括：最低传输延迟、最低传输延迟且延迟分布最均衡、最高带宽余量、最高带宽余量且负载最均衡等。这里：\
-xxxx --> 获取最低传输延迟的路由；；
-xxxxx --> 获取最低传输延迟且延迟分布最均衡的路由；
-usage --> 获取最高带宽余量的路由；
-usage_and_loading --> 获取最高带宽余量且负载最均衡的路由；
+--task: minimum_usage_of_bandwidth、minimum_and_balanced_usage_of_bandwidth、minimum_delay、minimum_and_balanced_delay，表示虚链路路由的优化过程中，需要遵循的既定前提条件，包括：最高带宽余量、最高带宽余量且负载最均衡、最低传输延迟、最低传输延迟且延迟分布最均衡等。这里：\
+minimum_delay --> 获取最低传输延迟的路由；；
+minimum_and_balanced_delay --> 获取最低传输延迟且延迟分布最均衡的路由；
+minimum_usage_of_bandwidth --> 获取最高带宽余量的路由；
+minimum_and_balanced_usage_of_bandwidth --> 获取最高带宽余量且负载最均衡的路由；
 --net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
 --Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）；\
 --Verify_Transmitting_Path: True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）。
@@ -40,38 +40,70 @@ python Main.py --VL_Processing=True --topology_type=AFDX\
 python Main.py --VL_Processing=True --topology_type=ARINC664
 
 4、优化虚链路路由：\
-python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=B\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_delay --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage --net_type=B\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_delay --net_type=B\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_delay --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_delay --net_type=B\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
 
 5、回溯消息传输路径：\
-python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=B\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=usage_and_loading --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_delay --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage --net_type=B\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_delay --net_type=B\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=A\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=usage_and_loading --net_type=B
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_delay --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_delay --net_type=B\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
 
 5、验证消息传输路径的正确性：\
 python Main.py --Verify_Transmitting_Path=True
