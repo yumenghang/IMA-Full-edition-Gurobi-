@@ -62,7 +62,7 @@ python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimu
 或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
 或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_delay --net_type=A\
 或者\
@@ -95,7 +95,7 @@ python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=min
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_delay --net_type=A\
 或者\
