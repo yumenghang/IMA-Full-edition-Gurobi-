@@ -3,7 +3,7 @@
 ## 1.1  使用
 __python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison=[True, False]__\
 __-h__: 无需参数值，打印程序help信息；\
-__--help__: 无需参数值，打印程序help信息；\
+__--help__: 无需参数值，打印程序help信息；
 
 __--pology_type__: 网络拓扑类型，取值：ARINC664或AFDX，表示消息的处理范围是在ARINC664网络拓扑中还是在AFDX网络拓扑中；\
 __--task__: 任务类型，取值：minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks，表示优化虚拟链路的优化目标，包括：最高带宽余量、最高带宽余量且负载最均衡、最低传输延迟、最低传输延迟且延迟分布最均衡、兼顾低传输延迟、高带宽余量和网络均衡。这里：\
@@ -12,7 +12,7 @@ minimum_and_balanced_delay --> 获取最低传输延迟且延迟分布最均衡�
 minimum_usage_of_bandwidth --> 获取最高带宽余量的路由；\
 minimum_and_balanced_usage_of_bandwidth --> 获取最高带宽余量且负载最均衡的路由；\
 multi_tasks --> 获取兼顾低传输延迟、高带宽余量和网络均衡的路由。\
-__--net_type__: 网络属性，取值：A或B，表示A网或B网；\
+__--net_type__: 网络属性，取值：A或B，表示A网或B网；
 
 __--Data_Processing__: 参数取值True或False，表示是否处理原始数据。原始数据的处理结果存储在同一路径下的"./Intermediate data file/"文件夹中（注：此功能不需要：opology_type、task、net_type参数）；\
 __--VL_Processing__: 参数取值True或者False，表示是否将消息以虚链路为单位进行划分。消息划分后得到的虚链路以字典的形式存储在同一路径下的"./Intermediate VL dict file/"文件夹中（注：此功能需要：topology_type参数）；\
@@ -24,7 +24,7 @@ __--Verify_Bandwidth_Usage__: 参数取值True或者False，表示借助Routes_P
 __--Generate_XML_File__: 参数取值True或者False，表示生成与网络拓扑、任务相对应的VirtualLinks.xml文件，得到的VirtualLinks.xml文件存储在同一路径下的"./xml_file/"文件夹中（注：此时需要额外的参数：topology_type以及task）；\
 __--Comparison__: 参数取值True或者False，表示：\
 1, 若topology_type参数值为ARINC664，则：借助SwitchNetConfigOutput_baeline.xml, VirtualLinks_baseline.xml, switchNetConfigOutput_optimized.xml, VirtualLinks_optimized.xml四个文件，对比ARINC664网络拓扑中，两种方案的带宽情况、时延情况；\
-2, 若topology_type参数值为AFDX，则：借助"./SwitchNetConfigOutput/IMA Network Configuration/VL Architecture/RGW01_NonA664.xml~RGW16_NonA664.xml", "./SwitchNetConfigOutput/VirtualLinks_baseline.xml"以及"./Intermediate VL dict file/VL_DICT_OF_A_NET_OF_AFDX, VL_DICT_OF_B_NET_OF_AFDX, VL_DICT_OF_A_NET_OF_ARINC664, VL_DICT_OF_B_NET_OF_ARINC664"，对比AFDX网络拓扑中，两种方案下，RDIU设备物理端口的带宽占用、虚拟链路数目以及路由的跳数对比；\
+2, 若topology_type参数值为AFDX，则：借助"./SwitchNetConfigOutput/IMA Network Configuration/VL Architecture/RGW01_NonA664.xml~RGW16_NonA664.xml", "./SwitchNetConfigOutput/VirtualLinks_baseline.xml"以及"./Intermediate VL dict file/VL_DICT_OF_A_NET_OF_AFDX, VL_DICT_OF_B_NET_OF_AFDX, VL_DICT_OF_A_NET_OF_ARINC664, VL_DICT_OF_B_NET_OF_ARINC664"，对比AFDX网络拓扑中，两种方案下，RDIU设备物理端口的带宽占用、虚拟链路数目以及路由的跳数对比；
 （注：此时需要额外的参数：topology_type以及task）。
 
 ### 1.1.1  功能模块：
@@ -37,7 +37,7 @@ __--Comparison__: 参数取值True或者False，表示：\
 7、验证消息传输路径的正确性；\
 8、验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况；\
 9、生成用于测试的VirtualLinks.xml文件；\
-10、对比baseline与optimized两种方案下路由的性能。\
+10、对比baseline与optimized两种方案下路由的性能。
 
 ### 1.1.2  命令
 __1、打印help信息：__\
@@ -173,9 +173,9 @@ python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_
 或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_delay\
 或者\
-python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay\
+python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
 
-__10、对比baseline与optimized两种方案下路由的性能：\
+__10、对比baseline与optimized两种方案下路由的性能：__\
 python Main.py --Comparison=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
 或者\
 python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth\
@@ -190,7 +190,7 @@ python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_and_bal
 或者\
 python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_delay\
 或者\
-python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_and_balanced_delay\
+python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：\
