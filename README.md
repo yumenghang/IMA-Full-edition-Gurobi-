@@ -2,21 +2,30 @@
 
 ## 1.1  使用
 __python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison=[True, False]__\
--h: 打印help信息；\
---help: 打印help信息；\
---Data_Processing: True或者False，表示是否处理原始数据。原始数据的处理结果存储在同一路径下的"./Intermediate data file/"文件夹中（注：此时不需要额外的参数）；\
---VL_Processing: True或者False，表示是否将消息以虚链路为单位进行划分。消息划分后得到的虚链路以字典的形式存储在同一路径下的"./Intermediate VL dict file/"文件夹中（注：此时需要额外的参数：topology_type）；\
---topology_type: AFDX或者ARINC6664，表示消息、虚链路的处理范围是在AFDX网络拓扑中还是在ARINC664网络拓扑中；\
---Routes_Optimization: True或者False，表示是否对虚链路的路由进行优化。虚链路路由的优化结果得到后，包括一些中间数据，均存储在同一路径下的"./Intermediate routes file/"文件夹中（注：此时需要额外的参数：topology_type、task以及net_type）；\
---task: minimum_usage_of_bandwidth、minimum_and_balanced_usage_of_bandwidth、minimum_delay、minimum_and_balanced_delay，表示虚链路路由的优化过程中，需要遵循的既定前提条件，包括：最高带宽余量、最高带宽余量且负载最均衡、最低传输延迟、最低传输延迟且延迟分布最均衡等。这里：\
-minimum_delay --> 获取最低传输延迟的路由；；
-minimum_and_balanced_delay --> 获取最低传输延迟且延迟分布最均衡的路由；
-minimum_usage_of_bandwidth --> 获取最高带宽余量的路由；
-minimum_and_balanced_usage_of_bandwidth --> 获取最高带宽余量且负载最均衡的路由；
---net_type: A或者B，表示消息、虚链路的处理范围是在A网还是B网中；\
---Routes_Path_Processing: True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此时需要额外的参数：topology_type、task以及net_type）；\
---Verify_Transmitting_Path: True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）；\
---Generate_XML_File: True或者False，表示生成对应网络拓扑、任务的VirtualLinks.xml文件，得到的VirtualLinks.xml文件存储在同一路径下的"./xml_file/"文件夹中（注：此时需要额外的参数：topology_type以及task）。
+__-h__: 无需参数值，打印程序help信息；\
+__--help__: 无需参数值，打印程序help信息；\
+
+__--pology_type__: 网络拓扑类型，取值：ARINC664或AFDX，表示消息的处理范围是在ARINC664网络拓扑中还是在AFDX网络拓扑中；\
+__--task__: 任务类型，取值：minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks，表示优化虚拟链路的优化目标，包括：最高带宽余量、最高带宽余量且负载最均衡、最低传输延迟、最低传输延迟且延迟分布最均衡、兼顾低传输延迟、高带宽余量和网络均衡。这里：\
+minimum_delay --> 获取最低传输延迟的路由；\
+minimum_and_balanced_delay --> 获取最低传输延迟且延迟分布最均衡的路由；\
+minimum_usage_of_bandwidth --> 获取最高带宽余量的路由；\
+minimum_and_balanced_usage_of_bandwidth --> 获取最高带宽余量且负载最均衡的路由；\
+multi_tasks --> 获取兼顾低传输延迟、高带宽余量和网络均衡的路由。\
+__--net_type__: 网络属性，取值：A或B，表示A网或B网；\
+
+__--Data_Processing__: 参数取值True或False，表示是否处理原始数据。原始数据的处理结果存储在同一路径下的"./Intermediate data file/"文件夹中（注：此功能不需要：opology_type、task、net_type参数）；\
+__--VL_Processing__: 参数取值True或者False，表示是否将消息以虚链路为单位进行划分。消息划分后得到的虚链路以字典的形式存储在同一路径下的"./Intermediate VL dict file/"文件夹中（注：此功能需要：topology_type参数）；\
+__--Round_BAG_of_Virtual_Links__: 参数取值True或False，表示是否对上一步得到的VL dict中BAG的取值进行处理。这里主要原因是：求解器直接返回的BAG的取值并非严格的0.5的整数倍，而有可能取诸如.49999999999、.99999999之类的数值，因此需要对VL dict中BAG的取值进行处理，以使其为严格的0.5的整数倍（注：此功能不需要：opology_type、task、net_type参数）；\
+__--Routes_Optimization__: 参数取值True或者False，表示是否对虚链路的路由进行优化。虚链路路由的优化结果得到后，包括一些中间数据，均存储在同一路径下的"./Intermediate routes file/"文件夹中（注：此功能需要：topology_type参数、task参数以及net_type参数）；\
+__--Routes_Path_Processing__: 参数取值True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此功能需要topology_type参数、task参数以及net_type参数）；\
+__--Verify_Transmitting_Path__: 参数取值True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）；\
+__--Verify_Bandwidth_Usage__: 参数取值True或者False，表示借助Routes_Path_Processing功能保留的路由信息，验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况（注：此功能需要topology_type参数、task参数以及net_type参数）；\
+__--Generate_XML_File__: 参数取值True或者False，表示生成与网络拓扑、任务相对应的VirtualLinks.xml文件，得到的VirtualLinks.xml文件存储在同一路径下的"./xml_file/"文件夹中（注：此时需要额外的参数：topology_type以及task）；\
+__--Comparison__: 参数取值True或者False，表示：\
+1, 若topology_type参数值为ARINC664，则：借助SwitchNetConfigOutput_baeline.xml, VirtualLinks_baseline.xml, switchNetConfigOutput_optimized.xml, VirtualLinks_optimized.xml四个文件，对比ARINC664网络拓扑中，两种方案的带宽情况、时延情况；\
+2, 若topology_type参数值为AFDX，则：借助"./SwitchNetConfigOutput/IMA Network Configuration/VL Architecture/RGW01_NonA664.xml~RGW16_NonA664.xml", "./SwitchNetConfigOutput/VirtualLinks_baseline.xml"以及"./Intermediate VL dict file/VL_DICT_OF_A_NET_OF_AFDX, VL_DICT_OF_B_NET_OF_AFDX, VL_DICT_OF_A_NET_OF_ARINC664, VL_DICT_OF_B_NET_OF_ARINC664"，对比AFDX网络拓扑中，两种方案下，RDIU设备物理端口的带宽占用、虚拟链路数目以及路由的跳数对比；\
+（注：此时需要额外的参数：topology_type以及task）。
 
 ### 1.1.1  功能模块：
 1、打印help信息；\
