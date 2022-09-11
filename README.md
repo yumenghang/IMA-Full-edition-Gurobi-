@@ -1,7 +1,7 @@
 # 1  IMA-Full edition (Gurobi)
 
 ## 1.1  使用
-__python__ Main.py -h --help --Data_Processing= --VL_Processing= --Round_BAG_of_Virtual_Links= --topology_type= --Routes_Optimization= --task= --net_type= --Routes_Path_Processing= --Verify_Transmitting_Path= --Verify_Bandwidth_Usage= --Generate_XML_File= --Comparison=\
+__python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison=[True, False]__\
 -h: 打印help信息；\
 --help: 打印help信息；\
 --Data_Processing: True或者False，表示是否处理原始数据。原始数据的处理结果存储在同一路径下的"./Intermediate data file/"文件夹中（注：此时不需要额外的参数）；\
