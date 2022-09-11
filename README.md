@@ -31,26 +31,32 @@ __--Comparison__: 参数取值True或者False，表示：\
 1、打印help信息；\
 2、原始数据文件处理；\
 3、消息分配及虚链路优化处理；\
-4、虚链路路由优化；\
-5、消息传输路径回溯；\
-6、验证消息传输路径的正确性；\
-7、生成用于测试的VirtualLinks.xml文件。
+4、虚拟链路BAG参数值处理；\
+5、虚拟链路路由优化；\
+6、消息传输路径回溯；\
+7、验证消息传输路径的正确性；\
+8、验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况；\
+9、生成用于测试的VirtualLinks.xml文件；\
+10、对比baseline与optimized两种方案下，路由的性能对比。\
 
 ### 1.1.2  命令
-1、打印help信息：\
+__1、打印help信息：__\
 python Main.py -h\
 或者\
 python Main.py --help
 
-2、处理原始数据文件：\
+__2、处理原始数据文件：__\
 python Main.py --Data_Processing=True
 
-3、优化处理消息分配及虚链路：\
+__3、优化处理消息分配及虚链路：__\
 python Main.py --VL_Processing=True --topology_type=AFDX\
 或者\
 python Main.py --VL_Processing=True --topology_type=ARINC664
 
-4、优化虚链路路由：\
+__4、虚拟链路BAG参数值处理：__\
+python Main.py --Round_BAG_of_Virtual_Links=True
+
+__5、优化虚链路路由：__\
 python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
 python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=B\
