@@ -19,7 +19,7 @@ __--VL_Processing__: 参数取值True或者False，表示是否将消息以虚�
 __--Round_BAG_of_Virtual_Links__: 参数取值True或False，表示是否对上一步得到的VL dict中BAG的取值进行处理。这里主要原因是：求解器直接返回的BAG的取值并非严格的0.5的整数倍，而有可能取诸如.49999999999、.99999999之类的数值，因此需要对VL dict中BAG的取值进行处理，以使其为严格的0.5的整数倍（注：此功能不需要：opology_type、task、net_type参数）；\
 __--Routes_Optimization__: 参数取值True或者False，表示是否对虚链路的路由进行优化。虚链路路由的优化结果得到后，包括一些中间数据，均存储在同一路径下的"./Intermediate routes file/"文件夹中（注：此功能需要：topology_type参数、task参数以及net_type参数）；\
 __--Routes_Path_Processing__: 参数取值True或者False，表示是否根据得到的虚链路的路由，回溯消息的传输路径（注：此功能需要topology_type参数、task参数以及net_type参数）；\
-__--Verify_Transmitting_Path__: 参数取值True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件）；\
+__--Verify_Transmitting_Path__: 参数取值True或者False，表示验证回溯得到的消息的传输路径的正确性（注：验证文件夹："./Messages routes file/"下所有的Messages dict文件，此功能不需要：opology_type、task、net_type参数）；\
 __--Verify_Bandwidth_Usage__: 参数取值True或者False，表示借助Routes_Path_Processing功能保留的路由信息，验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况（注：此功能需要topology_type参数、task参数以及net_type参数）；\
 __--Generate_XML_File__: 参数取值True或者False，表示生成与网络拓扑、任务相对应的VirtualLinks.xml文件，得到的VirtualLinks.xml文件存储在同一路径下的"./xml_file/"文件夹中（注：此时需要额外的参数：topology_type以及task）；\
 __--Comparison__: 参数取值True或者False，表示：\
@@ -37,7 +37,7 @@ __--Comparison__: 参数取值True或者False，表示：\
 7、验证消息传输路径的正确性；\
 8、验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况；\
 9、生成用于测试的VirtualLinks.xml文件；\
-10、对比baseline与optimized两种方案下，路由的性能对比。\
+10、对比baseline与optimized两种方案下路由的性能。\
 
 ### 1.1.2  命令
 __1、打印help信息：__\
@@ -89,7 +89,7 @@ python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimu
 或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
 
-5、回溯消息传输路径：\
+__6、回溯消息传输路径：__\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=B\
@@ -122,10 +122,43 @@ python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=min
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
 
-6、验证消息传输路径的正确性：\
+__7、验证消息传输路径的正确性：__\
 python Main.py --Verify_Transmitting_Path=True
 
-7、生成用于测试的VirtualLinks.xml文件：
+__8、验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况：__\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_delay --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_delay --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_delay --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_delay --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
+
+__9、生成用于测试的VirtualLinks.xml文件：__\
 python Main.py --Generate_XML_File=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
 或者\
 python Main.py --Generate_XML_File=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth\
@@ -141,6 +174,23 @@ python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_delay\
 或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay\
+
+__10、对比baseline与optimized两种方案下路由的性能：\
+python Main.py --Comparison=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --topology_type=AFDX --task=minimum_delay\
+或者\
+python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_delay\
+或者\
+python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_delay\
+或者\
+python Main.py --Comparison=True --topology_type=ARINC664 --task=minimum_and_balanced_delay\
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：\
