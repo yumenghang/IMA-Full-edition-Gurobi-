@@ -206,13 +206,13 @@ python Main.py --Comparison_of_ARINC664=True --task=minimum_delay\
 python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_delay
 
 __11、对比AFDX网络拓扑下baseline与optimized两种方案下路由的性能：__\
-python Main.py --Comparison=True --task=minimum_usage_of_bandwidth\
+python Main.py --Comparison_of_AFDX=True --task=minimum_usage_of_bandwidth\
 或者\
-python Main.py --Comparison=True --task=minimum_and_balanced_usage_of_bandwidth\
+python Main.py --Comparison_of_AFDX=True --task=minimum_and_balanced_usage_of_bandwidth\
 或者\
-python Main.py --Comparison=True --task=minimum_delay\
+python Main.py --Comparison_of_AFDX=True --task=minimum_delay\
 或者\
-python Main.py --Comparison=True --task=minimum_and_balanced_delay
+python Main.py --Comparison_of_AFDX=True --task=minimum_and_balanced_delay
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：\
