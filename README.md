@@ -180,23 +180,6 @@ python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
 
 __10、对比ARINC664网络拓扑下baseline与optimized两种方案下路由的性能：__\
-python Main.py --Comparison=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
-或者\
-python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth\
-或者\
-python Main.py --Comparison=True --topology_type=AFDX --task=minimum_delay\
-或者\
-python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_delay\
-或者\
-python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth\
-或者\
-python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth\
-或者\
-python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_delay\
-或者\
-python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
-
-__10、对比ARINC664网络拓扑下baseline与optimized两种方案下路由的性能：__\
 python Main.py --Comparison_of_ARINC664=True --task=minimum_usage_of_bandwidth\
 或者\
 python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_usage_of_bandwidth\
