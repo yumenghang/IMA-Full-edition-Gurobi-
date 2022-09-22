@@ -1,7 +1,7 @@
 # 1  IMA-Full edition (Gurobi)
 
 ## 1.1  使用
-__python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison_of_ARINC664=[True, False]__\
+__python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison_of_ARINC664=[True, False]__ __Comparison_of_AFDX=[True, False]\
 __-h__: 无需参数值，打印程序help信息；\
 __--help__: 无需参数值，打印程序help信息；
 
@@ -23,9 +23,12 @@ __--Verify_Transmitting_Path__: 参数取值True或者False，表示验证回溯
 __--Verify_Bandwidth_Usage__: 参数取值True或者False，表示借助Routes_Path_Processing功能保留的路由信息，验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况（注：此功能需要topology_type参数、task参数以及net_type参数）；\
 __--Generate_XML_File__: 参数取值True或者False，表示生成与网络拓扑、任务相对应的VirtualLinks.xml文件，得到的VirtualLinks.xml文件存储在同一路径下的"./xml_file/"文件夹中（注：此时需要额外的参数：topology_type以及task）；\
 __--Comparison_of_ARINC664__: 参数取值True或者False，表示：\
-1, 若topology_type参数值为ARINC664，则：借助SwitchNetConfigOutput_baeline.xml, VirtualLinks_baseline.xml, switchNetConfigOutput_optimized.xml, VirtualLinks_optimized.xml四个文件，对比ARINC664网络拓扑中，两种方案的带宽情况、时延情况；\
-2, 若topology_type参数值为AFDX，则：借助"./SwitchNetConfigOutput/IMA Network Configuration/VL Architecture/RGW01_NonA664.xml~RGW16_NonA664.xml", "./SwitchNetConfigOutput/VirtualLinks_baseline.xml"以及"./Intermediate VL dict file/VL_DICT_OF_A_NET_OF_AFDX, VL_DICT_OF_B_NET_OF_AFDX, VL_DICT_OF_A_NET_OF_ARINC664, VL_DICT_OF_B_NET_OF_ARINC664"，对比AFDX网络拓扑中，两种方案下，RDIU设备物理端口的带宽占用、虚拟链路数目以及路由的跳数对比；
-（注：此时需要额外的参数：topology_type以及task）。
+借助SwitchNetConfigOutput_baeline.xml, VirtualLinks_baseline.xml, switchNetConfigOutput_optimized.xml, VirtualLinks_optimized.xml四个文件，对比ARINC664网络拓扑中，两种方案的带宽情况、时延情况；\
+（注：此时需要额外的参数：task）。
+__Comparison_of_AFDX__: 参数取值True或者False，表示：\
+借助"./SwitchNetConfigOutput/IMA Network Configuration/VL Architecture/RGW01_NonA664.xml~RGW16_NonA664.xml", "./SwitchNetConfigOutput/VirtualLinks_baseline.xml"以及"./Intermediate VL dict file/VL_DICT_OF_A_NET_OF_AFDX, VL_DICT_OF_B_NET_OF_AFDX, VL_DICT_OF_A_NET_OF_ARINC664, VL_DICT_OF_B_NET_OF_ARINC664"，对比AFDX网络拓扑中，两种方案下，RDIU设备物理端口的带宽占用、虚拟链路数目以及路由的跳数对比。
+（注：此时需要额外的参数：task）。
+
 
 ### 1.1.1  功能模块：
 1、打印help信息；\
@@ -37,7 +40,8 @@ __--Comparison_of_ARINC664__: 参数取值True或者False，表示：\
 7、验证消息传输路径的正确性；\
 8、验证虚拟链路的带宽占用是否满足实际的物理链路带宽情况；\
 9、生成用于测试的VirtualLinks.xml文件；\
-10、对比baseline与optimized两种方案下路由的性能。
+10、对比ARINC664网络拓扑中baseline与optimized两种方案下路由的性能；\
+11、对比AFDX网络拓扑中baseline与optimized两种方案下路由的性能。
 
 ### 1.1.2  命令
 __1、打印help信息：__\
@@ -175,7 +179,7 @@ python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_
 或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
 
-__10、对比baseline与optimized两种方案下路由的性能：__\
+__10、对比ARINC664网络拓扑下baseline与optimized两种方案下路由的性能：__\
 python Main.py --Comparison=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
 或者\
 python Main.py --Comparison=True --topology_type=AFDX --task=minimum_and_balanced_usage_of_bandwidth\
@@ -191,6 +195,24 @@ python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=min
 python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_delay\
 或者\
 python Main.py --Comparison_of_ARINC664=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
+
+__10、对比ARINC664网络拓扑下baseline与optimized两种方案下路由的性能：__\
+python Main.py --Comparison_of_ARINC664=True --task=minimum_usage_of_bandwidth\
+或者\
+python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_usage_of_bandwidth\
+或者\
+python Main.py --Comparison_of_ARINC664=True --task=minimum_delay\
+或者\
+python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_delay
+
+__11、对比AFDX网络拓扑下baseline与optimized两种方案下路由的性能：__\
+python Main.py --Comparison=True --task=minimum_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --task=minimum_and_balanced_usage_of_bandwidth\
+或者\
+python Main.py --Comparison=True --task=minimum_delay\
+或者\
+python Main.py --Comparison=True --task=minimum_and_balanced_delay
 
 ## 1.2  中间过程文件下载
 因为中间过程文件占据存储空间较大，所以以交大云盘的形式进行共享，下面是链接，以供下载使用：\
