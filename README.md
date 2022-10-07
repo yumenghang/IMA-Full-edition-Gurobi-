@@ -1,7 +1,7 @@
 # 1  IMA-Full edition (Gurobi)
 
 ## 1.1  使用
-__python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison_of_ARINC664=[True, False]__ __Comparison_of_AFDX=[True, False]\
+__python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __--VL_Processing=[True, False]__ __--Round_BAG_of_Virtual_Links=[True, False]__ __--topology_type=[ARINC664, AFDX]__ __--Routes_Optimization[True, False]=__ __--task=[minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks]__ __--net_type=[A, B]__ __--Routes_Path_Processing=[True, False]__ __--Verify_Transmitting_Path=[True, False]__ __--Verify_Bandwidth_Usage=[True, False]__ __--Generate_XML_File=[True, False]__ __--Comparison_of_ARINC664=[True, False]__ __--Comparison_of_AFDX=[True, False]__\
 __-h__: 无需参数值，打印程序help信息；\
 __--help__: 无需参数值，打印程序help信息；
 
