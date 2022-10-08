@@ -79,6 +79,10 @@ python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_an
 或者\
 python Main.py --Routes_Optimization=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
 或者\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=AFDX --task=multi_tasks --net_type=B\
+或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
@@ -93,7 +97,11 @@ python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimu
 或者\
 python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
 或者\
-python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Routes_Optimization=True --topology_type=ARINC664 --task=multi_tasks --net_type=B
 
 __6、回溯消息传输路径：__\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_usage_of_bandwidth --net_type=A\
@@ -112,6 +120,10 @@ python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
 或者\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=AFDX --task=multi_tasks --net_type=B\
+或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
@@ -126,7 +138,11 @@ python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=min
 或者\
 python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
 或者\
-python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Routes_Path_Processing=True --topology_type=ARINC664 --task=multi_tasks --net_type=B
 
 __7、验证消息传输路径的正确性：__\
 python Main.py --Verify_Transmitting_Path=True
@@ -148,6 +164,10 @@ python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum
 或者\
 python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=minimum_and_balanced_delay --net_type=B\
 或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=AFDX --task=multi_tasks --net_type=B\
+或者\
 python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=A\
 或者\
 python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth --net_type=B\
@@ -162,7 +182,11 @@ python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=min
 或者\
 python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=A\
 或者\
-python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=minimum_and_balanced_delay --net_type=B\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=multi_tasks --net_type=A\
+或者\
+python Main.py --Verify_Bandwidth_Usage=True --topology_type=ARINC664 --task=multi_tasks --net_type=B
 
 __9、生成用于测试的VirtualLinks.xml文件：__\
 python Main.py --Generate_XML_File=True --topology_type=AFDX --task=minimum_usage_of_bandwidth\
@@ -173,13 +197,17 @@ python Main.py --Generate_XML_File=True --topology_type=AFDX --task=minimum_dela
 或者\
 python Main.py --Generate_XML_File=True --topology_type=AFDX --task=minimum_and_balanced_delay\
 或者\
+python Main.py --Generate_XML_File=True --topology_type=AFDX --task=multi_tasks\
+或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_usage_of_bandwidth\
 或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_usage_of_bandwidth\
 或者\
 python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_delay\
 或者\
-python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay
+python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=minimum_and_balanced_delay\
+或者\
+python Main.py --Generate_XML_File=True --topology_type=ARINC664 --task=multi_tasks
 
 __10、对比ARINC664网络拓扑下baseline与optimized两种方案下路由的性能：__\
 python Main.py --Comparison_of_ARINC664=True --task=minimum_usage_of_bandwidth\
@@ -188,7 +216,9 @@ python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_usage_o
 或者\
 python Main.py --Comparison_of_ARINC664=True --task=minimum_delay\
 或者\
-python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_delay
+python Main.py --Comparison_of_ARINC664=True --task=minimum_and_balanced_delay\
+或者\
+python Main.py --Comparison_of_ARINC664=True --task=multi_tasks
 
 __11、对比AFDX网络拓扑下baseline与optimized两种方案下路由的性能：__\
 python Main.py --Comparison_of_AFDX=True --task=minimum_usage_of_bandwidth\
@@ -197,7 +227,9 @@ python Main.py --Comparison_of_AFDX=True --task=minimum_and_balanced_usage_of_ba
 或者\
 python Main.py --Comparison_of_AFDX=True --task=minimum_delay\
 或者\
-python Main.py --Comparison_of_AFDX=True --task=minimum_and_balanced_delay
+python Main.py --Comparison_of_AFDX=True --task=minimum_and_balanced_delay\
+或者\
+python Main.py --Comparison_of_AFDX=True --task=multi_tasks
 
 __12、返回ARINC664或AFDX网络拓扑下，A网、B网以及全网消息的总跳数：__\
 python Main.py --Shortest_path=True --topology_type=ARINC664\
