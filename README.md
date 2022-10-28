@@ -5,7 +5,7 @@ __python__ __Main.py__ __-h__ __--help__ __--Data_Processing=[True, False]__ __-
 __-h__: 无需参数值，打印程序help信息；\
 __--help__: 无需参数值，打印程序help信息；
 
-__--pology_type__: 网络拓扑类型，取值：ARINC664或AFDX，表示消息的处理范围是在ARINC664网络拓扑中还是在AFDX网络拓扑中；\
+__--topology_type__: 网络拓扑类型，取值：ARINC664或AFDX，表示消息的处理范围是在ARINC664网络拓扑中还是在AFDX网络拓扑中；\
 __--task__: 任务类型，取值：minimum_usage_of_bandwidth, minimum_and_balanced_usage_of_bandwidth, minimum_delay, minimum_and_balanced_delay, multi_tasks，表示优化虚拟链路的优化目标，包括：最高带宽余量、最高带宽余量且负载最均衡、最低传输延迟、最低传输延迟且延迟分布最均衡、兼顾低传输延迟、高带宽余量和网络均衡。这里：\
 minimum_delay --> 获取最低传输延迟的路由；\
 minimum_and_balanced_delay --> 获取最低传输延迟且延迟分布最均衡的路由；\
